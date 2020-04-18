@@ -3,21 +3,16 @@ body {
     text-align: center;
     font-family: 'Dosis', sans-serif;
     background-color: rgb(243, 233, 241);
-
-    header {
-        text-align: center;
-        background-color: rgb(243, 233, 241);
-        height: 200px;
-        align-items: center;
-        margin-bottom: 5%;
-    }
 }
+
+
+
 
 #container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin: 5% 10% 5% 10%;
+    margin: 4% 10% 5% 10%;
 }
 
 .card {
@@ -28,16 +23,15 @@ body {
     transition: all .2s linear;
     margin: 1rem;
     background: white;
-    position: relative;
     height: 440px;
-    a{
-        position: absolute;
-        font-size: 1.3em;
+    a, button{
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        border: 0px;
         width: 33%;
-        bottom: 15px;
         padding-bottom: 5px;
         padding-top: 5px;
-        left: 33%;
         color: white;
         font-weight: bold;
         border-radius: 15px;
@@ -46,9 +40,13 @@ body {
     }
 }
 
+.bigger{
+    height: 500px;
+}
+
 .card:hover {
     box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
-    transform: translate3D(0, -2px, 0);
+    transform: translate3D(0, -1px, 0);
 }
 
 h1 {
@@ -75,4 +73,47 @@ p.price {
     font-size: 1.5em;
     margin-top: 3px;
     color: rgba(171, 101, 157, 1)
+}
+
+select{
+    text-align: center;
+    border: 0px;
+    margin: 0 auto;
+    display: block;
+    font-size: 0.9em;
+    width: 33%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    text-decoration: none;
+    background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+    option{
+        color: black;
+        font-size: 0.9em;
+        text-align: center;
+    }
+}
+
+nav{
+    ul{
+        list-style-type: none;
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto ;
+        width: 200px;
+        padding: 0;
+        li{
+            text-decoration: none;
+            a{
+                text-decoration: none;
+                color: black;
+                font-size: 1.3em;
+                background-color: white;
+                border-radius: 5px;
+                padding: 5px 10px 5px 10px;
+            }
+        }
+    }
 }
