@@ -18,7 +18,8 @@ const apiRequest = (param) => {
 }
 
 // DOM INDEX HTML
-const index = () => {
+
+window.onload = function (){
     apiRequest(requestUrl)
     .then((response) => { 
         createStructureIndex();
@@ -73,6 +74,10 @@ function createStructureIndex(){
     const a2 = document.createElement("a")
     a2.href = "panier.html"
     a2.textContent = "MON PANIER"
+
+    const logo = document.createElement("p")
+    logo.textContent = "Orinoco"
+    ul.appendChild(logo)
 
     const bContent = document.createElement("div")
     bContent.setAttribute("class", "header_content")
@@ -158,27 +163,27 @@ const singleProduit = () => {
         
         const h3 = document.createElement("h1")
         h3.textContent = response.name;
-        card.appendChild(h3);
+        div1.appendChild(h3);
 
         const img = document.createElement("img")
         img.src = (response.imageUrl)
-        card.appendChild(img)
+        div1.appendChild(img)
         
         const pDescr = document.createElement("p")
         pDescr.textContent = response.description;
-        card.appendChild(pDescr);
+        div2.appendChild(pDescr);
 
         const price = document.createElement("p")
         price.setAttribute("class", "price");
         price.textContent = response.price / 100 + " €"
-        card.appendChild(price)
+        div2.appendChild(price)
 
         let select = document.createElement("select")
-        card.appendChild(select)
+        div2.appendChild(select)
 
         const btnAddToCart = document.createElement("button")
         btnAddToCart.textContent = "Ajouter au panier";
-        card.appendChild(btnAddToCart)
+        div2.appendChild(btnAddToCart)
 
         const colors = response.colors
         for (color of colors) {
