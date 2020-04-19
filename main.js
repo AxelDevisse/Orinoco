@@ -7,7 +7,7 @@ const apiRequest = (param) => {
         appel.onload = function() {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
                 resolve(JSON.parse(this.responseText));
-                console.log("Liaison API OK !");
+                //console.log("Liaison API OK !");
             }else{
                 alert("Erreur du chargement de l'API...");
             }
@@ -143,18 +143,38 @@ const singleProduit = () => {
             select.appendChild(colorOptions)
         }
 
+        btnAddToCart.addEventListener("click", () => {            
         let panier = [];
-
-        btnAddToCart.addEventListener("click", function(){
-            panier.push({
-            id: response._id})
-            localStorage.setItem("cart", JSON.stringify(panier));
-            console.log(JSON.parse(localStorage.getItem("cart")));
-        })
+        // Parse the serialized data back into an aray of objects
+        panier = JSON.parse(localStorage.getItem('session')) || [];
+        // Push the new data (whether it be an object or anything else) onto the array
+        panier.push(response);
+        // Re-serialize the array back into a string and store it in localStorage
+        localStorage.setItem('session', JSON.stringify(panier));
+        });
     }
 
-        /*
-        GET if cart in local storage
-            true: store it inside var
-            false: create it inside var
-        */
+    function createPanierPage()  {
+    createStructure(); //header
+
+    const container = document.getElementById("container")
+    const div = document.createElement("div")
+    container.appendChild(div)
+    div.setAttribute("class", "panier")
+
+    let items = localStorage.getItem("session");
+    items = JSON.parse(items)
+
+    for(let allItems of items){
+        let pName = document.createElement("p")
+        pName.setAttribute("class", "name")
+        let pPrice = document.createElement("p")
+        pPrice.setAttribute("class", "item_price")
+        div.appendChild(pName)
+        div.appendChild(pPrice)
+        pName.textContent = allItems.name;
+        pPrice.textContent = allItems.price / 100 + " euros";
+    }
+    
+
+    }

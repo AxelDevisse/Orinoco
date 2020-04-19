@@ -5,6 +5,12 @@ body {
   background-color: #f3e9f1;
 }
 
+header {
+  border-bottom: 1px solid #222;
+  height: 210px;
+  margin: 0 auto;
+}
+
 #container {
   display: flex;
   justify-content: space-evenly;
@@ -15,24 +21,27 @@ body {
 .card {
   max-width: 300px;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
+  border-radius: 7px;
   overflow: hidden;
   transition: all 0.2s linear;
   margin: 1rem;
   background: white;
-  height: 440px;
+  height: 450px;
 }
 .card a, .card button {
   display: block;
   margin: 0 auto;
   margin-bottom: 15px;
   border: 0px;
-  width: 33%;
+  width: 50%;
+  height: 30px;
   padding-bottom: 5px;
   padding-top: 5px;
-  color: white;
+  color: black;
+  font-size: 1.1em;
+  font-family: "Dosis", sans-serif;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 7px;
   text-decoration: none;
   background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
 }
@@ -77,12 +86,12 @@ select {
   margin: 0 auto;
   display: block;
   font-size: 0.9em;
-  width: 33%;
+  width: 40%;
   padding-bottom: 5px;
   padding-top: 5px;
-  color: white;
+  color: rgba(0, 0, 0, 0.8);
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 7px;
   text-decoration: none;
   background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
 }
@@ -92,24 +101,43 @@ select option {
   text-align: center;
 }
 
+nav {
+  width: 300px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
 nav ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-around;
   margin: 0 auto;
-  width: 200px;
-  padding: 0;
+  justify-content: space-between;
+  padding-left: 0px;
 }
 nav ul li {
   text-decoration: none;
+  border: 1px solid #222;
+  border-radius: 5px;
+  height: 35px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 nav ul li a {
   text-decoration: none;
   color: black;
-  font-size: 1.3em;
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: #f3e9f1;
+  padding: 0px 15px;
+}
+
+.name, .item_price {
+  margin-bottom: 0px;
+}
+
+.panier {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */
