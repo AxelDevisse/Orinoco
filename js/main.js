@@ -19,7 +19,7 @@ const apiRequest = (param) => {
 
 // DOM INDEX HTML
 
-if(window.location.pathname=="/index.html")
+if(window.location.pathname =="/index.html")
 { 
     apiRequest(requestUrl)
     .then((response) => { 
@@ -84,7 +84,7 @@ function createStructureIndex(){
     bContent.setAttribute("class", "header_content")
 
     const h2 = document.createElement("h2")
-    h2.textContent = "30% DE REDUCTION"
+    h2.textContent = "SOLDES D'ETE"
 
     const href = document.createElement("a")
     href.href = "#container"
@@ -205,25 +205,68 @@ const singleProduit = () => {
         });
     }
 
-    function createPanierPage()  {
-    createStructureOther(); //header
+// Page Mon panier
+function createPanierPage()  {
+createStructureOther(); //header
 
-    const container = document.getElementById("container")
-    const div = document.createElement("div")
-    container.appendChild(div)
-    div.setAttribute("class", "panier")
+const body = document.querySelector("body")
+body.style.textAlign = "left"
 
-    let items = localStorage.getItem("session");
-    items = JSON.parse(items)
+// Creation Div mon panier
+const container = document.getElementById("container")
+container.style.display = "block"
+const divPanier = document.createElement("div")
+divPanier.setAttribute("class", "panier")
+container.appendChild(divPanier)
+const panierState = document.createElement("h1")
+panierState.setAttribute("class", "panierStatement")
+divPanier.appendChild(panierState)
 
-        for(let allItems of items){
-            let pName = document.createElement("p")
-            pName.setAttribute("class", "name")
-            let pPrice = document.createElement("p")
-            pPrice.setAttribute("class", "item_price")
-            div.appendChild(pName)
-            div.appendChild(pPrice)
-            pName.textContent = allItems.name;
-            pPrice.textContent = allItems.price / 100 + " euros";
-            }
+// On get le local storage
+let items = localStorage.getItem("session");
+items = JSON.parse(items)
+
+// Check si quelque chose dans le localS
+if(items === null){
+    panierState.textContent = "Votre panier est vide !"
+    } else {
+        panierState.textContent = "Recapitulatif de votre panier !"
+        const ul = document.createElement("ul")
+        divPanier.appendChild(ul)
+
+        var totalPrice = 0;
+
+        for(var allItems of items){
+            const li = document.createElement ("li")
+            li.textContent = allItems.name + " - " + allItems.price / 100 + " euros"
+            ul.appendChild(li)
+            totalPrice += allItems.price / 100
+        }
+
+    const panierPrice = document.createElement("h3")
+    panierPrice.setAttribute("class", "total_price")
+    divPanier.appendChild(panierPrice)
+    panierPrice.textContent = "Montant total de votre panier : " + totalPrice + " euros"
+
+    // Creation du formulaire
+    const form = document.createElement("fieldset")
+    container.appendChild(form)
+    const labelChoice = ["Prénom","Nom", "Adresse de livraison","Ville", "Email"]
+
+    for(let labels of labelChoice) {
+        const label = document.createElement("label")
+        const input = document.createElement("input")
+
+        if(labels === "Email"){
+            input.setAttribute("type", "email")
+        } else
+        input.setAttribute("type", "text")
+        input.setAttribute("placeholder", `Entrez votre ${labels}`)
+        input.setAttribute("required", "true")
+        label.textContent = labels
+
+        form.appendChild(label)
+        form.appendChild(input)
+        }
     }
+}

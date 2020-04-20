@@ -8,6 +8,7 @@ body {
   text-align: center;
   font-family: "Dosis", sans-serif;
   background-color: white;
+  height: 100vh;
 }
 
 header {
@@ -178,10 +179,6 @@ nav ul li a {
   margin-bottom: 0px;
 }
 
-.panier {
-  display: flex;
-}
-
 .content {
   width: 100%;
   display: flex;
@@ -208,6 +205,15 @@ nav p {
   font-size: 2.5em;
   font-weight: bold;
   margin: 0;
+}
+
+li {
+  text-align: left;
+}
+
+fieldset {
+  display: flex;
+  max-width: 200px;
 }
 
 /*# sourceMappingURL=style.css.map */
