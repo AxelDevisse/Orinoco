@@ -74,6 +74,7 @@ header.other {
 .card a, .card button, .content button {
   display: block;
   margin: 0 auto;
+  cursor: pointer;
   margin-bottom: 15px;
   border: 0px;
   width: 50%;
@@ -135,7 +136,7 @@ select {
 
 nav {
   width: 100%;
-  height: 10%;
+  height: 70px;
   margin: 0 auto;
   background-color: white;
   position: fixed;
@@ -146,10 +147,10 @@ nav ul {
   list-style-type: none;
   display: flex;
   padding-left: 0px;
-  padding-top: 11px;
   text-align: center;
   margin: 0 auto;
   width: 50%;
+  height: 70px;
   align-items: center;
   justify-content: center;
 }
@@ -184,7 +185,8 @@ nav ul li a {
 .content {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .content h1 {
   font-family: "Dancing Script", cursive;
@@ -192,8 +194,9 @@ nav ul li a {
 }
 
 .show1 img {
-  max-height: 350px;
+  max-height: 300px;
   padding-right: 20px;
+  padding-bottom: 30px;
 }
 
 .show2 {

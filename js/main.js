@@ -19,7 +19,8 @@ const apiRequest = (param) => {
 
 // DOM INDEX HTML
 
-window.onload = function (){
+if(window.location.pathname=="/index.html")
+{ 
     apiRequest(requestUrl)
     .then((response) => { 
         createStructureIndex();
@@ -215,16 +216,14 @@ const singleProduit = () => {
     let items = localStorage.getItem("session");
     items = JSON.parse(items)
 
-    for(let allItems of items){
-        let pName = document.createElement("p")
-        pName.setAttribute("class", "name")
-        let pPrice = document.createElement("p")
-        pPrice.setAttribute("class", "item_price")
-        div.appendChild(pName)
-        div.appendChild(pPrice)
-        pName.textContent = allItems.name;
-        pPrice.textContent = allItems.price / 100 + " euros";
-    }
-    
-
+        for(let allItems of items){
+            let pName = document.createElement("p")
+            pName.setAttribute("class", "name")
+            let pPrice = document.createElement("p")
+            pPrice.setAttribute("class", "item_price")
+            div.appendChild(pName)
+            div.appendChild(pPrice)
+            pName.textContent = allItems.name;
+            pPrice.textContent = allItems.price / 100 + " euros";
+            }
     }
