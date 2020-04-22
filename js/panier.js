@@ -18,6 +18,7 @@ function createPanierPage()  {
     // On get le local storage
     let items = localStorage.getItem("session");
     items = JSON.parse(items)
+    console.log(items);
 
     // Check si quelque chose dans le localStorage
     if(items === null) {
@@ -27,7 +28,7 @@ function createPanierPage()  {
         const ul = document.createElement("ul")
         divPanier.appendChild(ul)
 
-        var totalPrice = 0;
+        let totalPrice = 0;
 
         for(var allItems of items){
             const li = document.createElement ("li")
@@ -45,56 +46,29 @@ function createPanierPage()  {
     // Creation du formulaire
     const form = document.createElement("form")
     container.appendChild(form)
-    const labelChoice = ["Prénom","Nom", "Adresse","Ville", "Email"]
+    // const labelChoice = ["Prénom","Nom", "Adresse","Ville", "Email"]
 
-    for(let labels of labelChoice) {
+    function createField(name, type, labels, required, placeholder){
         const label = document.createElement("label")
         const input = document.createElement("input")
-
-        
-
-        if(labels === "Email"){
-            label.setAttribute("for", "email")
-            input.setAttribute("type", "email")
-            input.setAttribute("required", "true")
-            input.setAttribute("placeholder", `Entrez votre ${labels}`)
-            label.textContent = labels
-            form.appendChild(label)
-            form.appendChild(input)
-        }else if (labels === "Prénom"){
-            label.setAttribute("for", "prenom")
-            input.setAttribute("type", "text")
-            input.setAttribute("placeholder", `Entrez votre ${labels}`)
-            input.setAttribute("required", "true")
-            label.textContent = labels
-            form.appendChild(label)
-            form.appendChild(input)
-        }else if (labels === "Nom") {
-            label.setAttribute("for", "nom")
-            input.setAttribute("type", "text")
-            input.setAttribute("placeholder", `Entrez votre ${labels}`)
-            input.setAttribute("required", "true")
-            label.textContent = labels
-            form.appendChild(label)
-            form.appendChild(input)
-        }else if (labels === "Adresse") {
-            label.setAttribute("for", "adress")
-            input.setAttribute("type", "text")
-            input.setAttribute("placeholder", `Entrez votre ${labels}`)
-            input.setAttribute("required", "true")
-            label.textContent = labels
-            form.appendChild(label)
-            form.appendChild(input)
-        } else if (labels === "Ville") {
-            label.setAttribute("for", "ville")
-            input.setAttribute("type", "text")
-            input.setAttribute("placeholder", `Entrez votre ${labels}`)
-            input.setAttribute("required", "true")
-            label.textContent = labels
-            form.appendChild(label)
-            form.appendChild(input)
-        }
+        label.setAttribute("for", name)
+        input.setAttribute("type", type)
+        input.setAttribute("name", name)
+        if (required)
+            input.setAttribute("required", required)
+        input.setAttribute("placeholder", placeholder)
+        label.textContent = labels
+        form.appendChild(label)
+        form.appendChild(input)
+        return input;
     }
+
+     
+    let nameInput = createField("prenom", "text", "prenom", "true", `Entrez votre adresse mail`);
+
+
+
+    
 
 
     const submit = document.createElement("input")
@@ -106,3 +80,7 @@ function createPanierPage()  {
 }
 }
 //Page mon panier
+
+let contact ={
+    name : nameInput.value
+}
