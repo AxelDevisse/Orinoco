@@ -69,6 +69,7 @@ header.other{
         margin: 0 auto;
         cursor: pointer;
         margin-bottom: 15px;
+        line-height: 40px;
         border: 0px;
         width: 50%;
         height: 40px;
@@ -211,7 +212,15 @@ li{
     text-align: left;
 }
 
-fieldset{
+form{
     display: flex;
+    flex-direction: column;
     max-width: 200px;
+}
+
+input[type="submit" i]{
+    background-color: rgba(30, 155, 51, 0.8);
+    margin-top: 10px;
+    padding: 7px;
+    font-weight: bold;
 }
