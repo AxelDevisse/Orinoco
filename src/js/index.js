@@ -1,8 +1,19 @@
 import {apiRequest, requestUrl} from './api.js';
 import "../sass/main.scss"
 
+import createPanierPage from "./panier.js"
+import createProductPage from "./product.js"
+
+if(window.location.pathname =="/src/panier.html") { 
+    createPanierPage();
+}
+
+if(window.location.pathname =="/src/produit.html"){
+    createProductPage();
+}
+
 // DOM INDEX HTML
-if(window.location.pathname =="/index.html") { 
+if(window.location.pathname =="/src/index.html") { 
     apiRequest(requestUrl)
     .then((response) => { 
         createStructureIndex();
@@ -119,13 +130,3 @@ function createStructureIndex(){
     container.setAttribute ("id", "container");
     root.appendChild(container);
 }
-
-    import createPanierPage from "./panier.js"
-    if(window.location.pathname =="/panier.html") { 
-        createPanierPage();
-    }
-
-    import createPageProduct from "./product.js"
-    if(window.location.pathname =="/produit.html"){
-        createPageProduct();
-    }

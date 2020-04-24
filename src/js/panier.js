@@ -1,4 +1,5 @@
 import createStructureOther from "./index.js"
+import {ajaxRequestPost} from "./api.js"
 
 // Page Mon panier
 export default function createPanierPage() {
@@ -64,30 +65,50 @@ export default function createPanierPage() {
         form.appendChild(input)
         return input;
     }
-
      
-    // let nameInput = createField("prenom", "text", "prenom", "true", `Entrez votre adresse mail`);
-
-
-
-    
-
+    let firstNameInput  = createField("prenom", "text", "Prenom", "true", `Entrez votre prénom`);
+    let secondNameInput = createField("nom", "text", "Nom", "true", `Entrez votre nom`);
+    let adressInput     = createField("adress", "text", "Adresse", "true", `Entrez votre adresse`);
+    let cityInput       = createField("city", "text", "Ville", "true", `Entrez votre ville`);
+    let mailInput       = createField("mail", "text", "Email", "true", `Entrez votre email`);
 
     const submit = document.createElement("input")
     submit.type = "submit"
     submit.setAttribute("value", "Valider ma commande")
+    submit.setAttribute("id", "submit")
 
     form.appendChild(submit)
 
+
+    const submit2 = document.getElementById("submit")
+    submit2.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        let order ={
+            contact: {
+                firstName : firstNameInput.value,
+                lastName : secondNameInput.value,
+                address: adressInput.value,
+                city: cityInput.value,
+                email: mailInput.value,
+            },
+            products: items
+
+        };
+
+        ajaxRequestPost(order, "http://localhost:3000/api/teddies/order")
+        .then((res) => {
+        console.log(res);
+        
+        container.style.display = "none"
+
+        });
+
+    });
+
 }
 }
-
-
-//Page mon panier
-
-// let contact ={
-//     name : nameInput.value
-// }
 
 
 
