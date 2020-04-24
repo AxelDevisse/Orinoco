@@ -1,4 +1,5 @@
 import {apiRequest, requestUrl} from './api.js';
+import "../sass/main.scss"
 
 // DOM INDEX HTML
 if(window.location.pathname =="/index.html") { 
