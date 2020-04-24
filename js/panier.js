@@ -1,6 +1,8 @@
+import createStructureOther from "./index.js"
+
 // Page Mon panier
-function createPanierPage()  {
-    createStructureOther(); //header
+export default function createPanierPage() {
+     createStructureOther(); //header
 
     const body = document.querySelector("body")
     body.style.textAlign = "left"
@@ -64,7 +66,7 @@ function createPanierPage()  {
     }
 
      
-    let nameInput = createField("prenom", "text", "prenom", "true", `Entrez votre adresse mail`);
+    // let nameInput = createField("prenom", "text", "prenom", "true", `Entrez votre adresse mail`);
 
 
 
@@ -79,8 +81,14 @@ function createPanierPage()  {
 
 }
 }
+
+
 //Page mon panier
 
-let contact ={
-    name : nameInput.value
-}
+// let contact ={
+//     name : nameInput.value
+// }
+
+
+
+

@@ -1,26 +1,8 @@
-const requestUrl = "http://localhost:3000/api/teddies/";
-
-// Liaison
-const apiRequest = (param) => {
-    return new Promise((resolve)=>{
-        let appel = new XMLHttpRequest();
-        appel.onload = function() {
-            if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                resolve(JSON.parse(this.responseText));
-                //console.log("Liaison API OK !");
-            }else{
-                alert("Erreur du chargement de l'API...");
-            }
-        };
-        appel.open("GET", param); //GET pour recuperation données
-        appel.send();
-    });
-}
+import {apiRequest, requestUrl} from './api.js';
 
 // DOM INDEX HTML
-
 if(window.location.pathname =="/index.html") { 
-    apiRequest(requestUrl)
+    apiRequest("http://localhost:3000/api/teddies/")
     .then((response) => { 
         createStructureIndex();
         response.forEach(ours => { 
@@ -106,7 +88,7 @@ function createStructureIndex(){
 }
 
 
-function createStructureOther(){
+    export default function createStructureOther(){
     const app = document.getElementById("root");
     const header = document.createElement("header");
     header.setAttribute("class", "other")
@@ -141,7 +123,7 @@ var full_url = document.URL; // Get current url
 var url_array = full_url.split('=') // Split the string into an array with / as separator
 var currentUrlLocation = url_array[url_array.length-1];  // Get the last part of the array (-1)
 
-const singleProduit = () => {
+if(window.location.pathname =="/produit.html") {
     apiRequest("http://localhost:3000/api/teddies/" + currentUrlLocation)
     .then((response) => {
         createStructureOther();
@@ -205,4 +187,7 @@ const singleProduit = () => {
         });
     }
 
-
+    import createPanierPage from "./panier.js"
+    if(window.location.pathname =="/panier.html") { 
+        createPanierPage();
+    }

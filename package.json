@@ -1,13 +1,25 @@
 {
   "name": "front",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch sass/main.scss:css/style.css"
-
+    "sass": "sass --watch sass/main.scss:css/style.css",
+    "build": "webpack"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxelDevisse/Orinoco.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AxelDevisse/Orinoco/issues"
+  },
+  "homepage": "https://github.com/AxelDevisse/Orinoco#readme",
+  "description": "",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
 }
