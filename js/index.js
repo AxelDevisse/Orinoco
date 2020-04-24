@@ -2,7 +2,7 @@ import {apiRequest, requestUrl} from './api.js';
 
 // DOM INDEX HTML
 if(window.location.pathname =="/index.html") { 
-    apiRequest("http://localhost:3000/api/teddies/")
+    apiRequest(requestUrl)
     .then((response) => { 
         createStructureIndex();
         response.forEach(ours => { 
@@ -161,19 +161,20 @@ if(window.location.pathname =="/produit.html") {
         price.textContent = response.price / 100 + " €"
         div2.appendChild(price)
 
-        let select = document.createElement("select")
-        div2.appendChild(select)
-
         const btnAddToCart = document.createElement("button")
         btnAddToCart.textContent = "Ajouter au panier";
         div2.appendChild(btnAddToCart)
 
+        let select = document.createElement("select")
+        div2.appendChild(select)
+        
+        let color;
         const colors = response.colors
         for (color of colors) {
             const colorOptions = document.createElement("option")
-            colorOptions.value = color
-            colorOptions.textContent = color;
             select.appendChild(colorOptions)
+            colorOptions.value = color;
+            colorOptions.textContent = color;
         }
 
         btnAddToCart.addEventListener("click", () => {            
