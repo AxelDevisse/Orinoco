@@ -48,15 +48,17 @@ export default function createPanierPage() {
 
     // Creation du formulaire
     const form = document.createElement("form")
+    // form.setAttribute("target", "#")
     container.appendChild(form)
     // const labelChoice = ["Prénom","Nom", "Adresse","Ville", "Email"]
 
-    function createField(name, type, labels, required, placeholder){
+    function createField(name, type, labels, required, pattern, placeholder){
         const label = document.createElement("label")
         const input = document.createElement("input")
         label.setAttribute("for", name)
         input.setAttribute("type", type)
         input.setAttribute("name", name)
+        input.setAttribute("pattern", pattern)
         if (required)
             input.setAttribute("required", required)
         input.setAttribute("placeholder", placeholder)
@@ -66,11 +68,11 @@ export default function createPanierPage() {
         return input;
     }
      
-    let firstNameInput  = createField("prenom", "text", "Prenom", "true", `Entrez votre prénom`);
-    let secondNameInput = createField("nom", "text", "Nom", "true", `Entrez votre nom`);
-    let adressInput     = createField("adress", "text", "Adresse", "true", `Entrez votre adresse`);
-    let cityInput       = createField("city", "text", "Ville", "true", `Entrez votre ville`);
-    let mailInput       = createField("mail", "text", "Email", "true", `Entrez votre email`);
+    let firstNameInput  = createField("prenom", "text", "Prenom", "true", "[A-Za-z]{3,}", `Entrez votre prénom`);
+    let secondNameInput = createField("nom", "text", "Nom", "true", "[A-Za-z]{2,}", `Entrez votre nom`);
+    let adressInput     = createField("adress", "text", "Adresse", "true", "[A-Za-z]{5,}", `Entrez votre adresse`);
+    let cityInput       = createField("city", "text", "Ville", "true", "[A-Za-z]{3,}", `Entrez votre ville`);
+    let mailInput       = createField("email", "email", "Email", "true", "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", `Entrez votre mail`);
 
     const submit = document.createElement("input")
     submit.type = "submit"
@@ -79,11 +81,9 @@ export default function createPanierPage() {
 
     form.appendChild(submit)
 
+    submit.addEventListener("submit", (event) => {
 
-    const submit2 = document.getElementById("submit")
-    submit2.addEventListener("click", (event) => {
         event.preventDefault();
-        event.stopPropagation();
 
         let order ={
             contact: {
@@ -94,19 +94,16 @@ export default function createPanierPage() {
                 email: mailInput.value,
             },
             products: items
-
         };
 
         ajaxRequestPost(order, "http://localhost:3000/api/teddies/order")
         .then((res) => {
         console.log(res);
+        })
+
         
-        container.style.display = "none"
-
-        });
-
     });
-
+    
 }
 }
 
