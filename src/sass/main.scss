@@ -7,22 +7,30 @@ body {
     text-align: center;
     font-family: 'Dosis', sans-serif;
     background-color: white;
-    height: 100vh;
+    height: 100vh; 
 }
 
 header{
-    border-bottom: 1px solid #222;
-    height: 100vh;
+    border-bottom: 4px solid #222;
+    height: 99vh;
     margin: 0 auto;
     top: 0px;
-    @media all and (min-width: 2560px) {
-    background: no-repeat center url("/src/images/wallpaper_3800.jpg");
-    background-size: cover;
-    }
-    @media all and (max-width: 2560px) {
-    background: no-repeat center url("/src/images/wallpaper_2560.jpg");
-    background-size: cover;
-    }
+    background: url('../images/wallpaper_1920.jpg') center no-repeat;
+	background-size: cover;
+    @media all and (max-width: 1200px){
+        background-image: url('../../dist/wallpaper_1200.jpg');
+        background-size: cover;
+      }
+    @media all and (min-width: 2560px){
+        background: url('../images/wallpaper_2560.jpg') center no-repeat;
+        background-size: cover;
+      }
+      @media all and (max-width: 600px){
+        background: url('../../dist//wallpaper_600.jpg') center no-repeat;
+        height: 50vh;
+        border-bottom: 0px;
+        .header_content{ display: none;}
+      }
 }
 
 header.other{
@@ -134,7 +142,7 @@ nav{
     width: 100%;
     height: 70px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 1);
+    background-color :white;
     position: fixed;
     border-bottom: 1px solid #222;
     z-index: 4;
@@ -174,9 +182,9 @@ nav{
     margin-bottom: 0px;
 }
 
-// .panier{
-//     display: flex;
-// }
+.panierStatement {
+    text-decoration: underline;
+ }
 
 .content{
     width: 100%;
@@ -194,11 +202,17 @@ nav{
     max-height: 300px;
     padding-right: 20px;
     padding-bottom: 30px;
+    max-width: 100%;
     }
 }
 
+.show1{
+    max-width: 50%;
+}
+
 .show2{
-    padding: 10% 0% 10% 0%;
+    padding: 20% 0% 20% 0%;
+    max-width: 50%;
 }
 
 nav p {
@@ -223,4 +237,20 @@ input[type="submit" i]{
     margin-top: 10px;
     padding: 7px;
     font-weight: bold;
+}
+
+footer{
+    display: flex;
+    height: 75px;
+    width: 100%;
+    color: white;
+    background-color: black;
+    text-align: center;
+    p {
+        margin: auto;
+    }
+}
+
+.panier{
+    margin-bottom: 15px;
 }

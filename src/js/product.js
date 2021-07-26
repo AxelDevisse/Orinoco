@@ -68,4 +68,5 @@ var currentUrlLocation = url_array[url_array.length-1];  // Get the last part of
         // Re-serialize the array back into a string and store it in localStorage
         localStorage.setItem('session', JSON.stringify(panier));
         });
+
     }

@@ -4,9 +4,10 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch sass/main.scss:css/style.css",
+    "sass": "sass --watch sass/main.scss:sass/main.css",
     "build": "webpack",
-    "start": "webpack-dev-server --hot --watch --inline --progress --colors"
+    "start": "webpack-dev-server --watch --hot --inline --progress --colors",
+    "dev": "webpack serve"
   },
   "author": "",
   "license": "ISC",
@@ -20,22 +21,21 @@
   "homepage": "https://github.com/AxelDevisse/Orinoco#readme",
   "description": "",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-loader": "^8.1.0",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
-    "css-loader": "^3.5.3",
-    "css-minify": "^1.0.1",
+    "css-loader": "^5.2.6",
+    "css-minify": "^1.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^6.0.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.0",
-    "resolve-url-loader": "^3.1.1",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.1.4",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
-  },
-  "dependencies": {}
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.6.2",
+    "node-sass": "^6.0.1",
+    "resolve-url-loader": "^4.0.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.0.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
 }

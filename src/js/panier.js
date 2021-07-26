@@ -46,6 +46,15 @@ export default function createPanierPage() {
     divPanier.appendChild(panierPrice)
     panierPrice.textContent = "Montant total de votre panier : " + totalPrice + " euros"
 
+    const btnClearStorage = document.createElement("button")
+    btnClearStorage.textContent = "Vider mon panier";
+    divPanier.appendChild(btnClearStorage)
+
+    btnClearStorage.addEventListener("click", () => {            
+        localStorage.clear();
+
+        });
+
     // Creation du formulaire
     const form = document.createElement("form")
     // form.setAttribute("target", "#")
@@ -81,7 +90,7 @@ export default function createPanierPage() {
 
     form.appendChild(submit)
 
-    submit.addEventListener("submit", (event) => {
+    form.addEventListener("submit", (event) => {
 
         event.preventDefault();
 
